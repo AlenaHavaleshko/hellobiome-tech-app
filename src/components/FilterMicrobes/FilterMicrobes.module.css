@@ -1,0 +1,130 @@
+.filterContainer {
+  margin-bottom: 24px;
+}
+
+.filterLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #495057;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.filterButtons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  background: white;
+  color: #495057;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.filterButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.filterButton:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.filterButton:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.filterButton:active {
+  transform: translateY(0);
+}
+
+.filterButton.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.filterButton.active.bacteria {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.filterButton.active.fungi {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-color: #f093fb;
+  box-shadow: 0 4px 12px rgba(240, 147, 251, 0.3);
+}
+
+.filterButton.active::before {
+  display: none;
+}
+
+.filterIcon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.filterButton:hover .filterIcon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.filterButton.active .filterIcon {
+  transform: scale(1.1);
+}
+
+.filterText {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 480px) {
+  .filterButtons {
+    flex-direction: column;
+  }
+
+  .filterButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .filterLabel {
+    color: #adb5bd;
+  }
+
+  .filterButton {
+    background: #2d2d2d;
+    border-color: #3a3a3a;
+    color: #adb5bd;
+  }
+
+  .filterButton:hover {
+    border-color: #667eea;
+  }
+}

@@ -1,0 +1,119 @@
+.sortContainer {
+  margin-bottom: 24px;
+}
+
+.sortLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #495057;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.sortButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  background: white;
+  color: #495057;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.sortButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.sortButton:hover::before {
+  left: 100%;
+}
+
+.sortButton:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.sortButton:active {
+  transform: translateY(0);
+}
+
+.sortIcon {
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.sortButton:hover .sortIcon {
+  transform: scale(1.2);
+}
+
+.sortText {
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.sortBadge {
+  padding: 4px 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 480px) {
+  .sortButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .sortLabel {
+    color: #adb5bd;
+  }
+
+  .sortButton {
+    background: #2d2d2d;
+    border-color: #3a3a3a;
+    color: #adb5bd;
+  }
+
+  .sortButton:hover {
+    border-color: #667eea;
+  }
+}
