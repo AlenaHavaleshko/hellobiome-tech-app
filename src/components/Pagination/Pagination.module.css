@@ -1,0 +1,133 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 48px;
+  padding: 24px 0;
+}
+
+.paginationButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 8px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  background-color: white;
+  color: #495057;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.paginationButton:hover:not(:disabled) {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.paginationButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: #e9ecef;
+}
+
+.arrowButton {
+  min-width: 44px;
+}
+
+.arrowButton svg {
+  display: block;
+}
+
+.arrowButton:disabled svg {
+  opacity: 0.4;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0 8px;
+}
+
+.pageButton {
+  min-width: 44px;
+}
+
+.pageButton.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  color: #6c757d;
+  font-size: 16px;
+  font-weight: 700;
+  user-select: none;
+}
+
+@media screen and (max-width: 768px) {
+  .pagination {
+    gap: 6px;
+    margin-top: 32px;
+  }
+
+  .paginationButton {
+    min-width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .arrowButton {
+    min-width: 36px;
+  }
+
+  .pageNumbers {
+    gap: 6px;
+    margin: 0 4px;
+  }
+
+  .pageButton {
+    min-width: 36px;
+  }
+
+  .ellipsis {
+    min-width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .paginationButton {
+    background: #2d2d2d;
+    border-color: #3a3a3a;
+    color: #adb5bd;
+  }
+
+  .paginationButton:hover:not(:disabled) {
+    border-color: #667eea;
+  }
+
+  .paginationButton:disabled {
+    border-color: #3a3a3a;
+  }
+
+  .ellipsis {
+    color: #868e96;
+  }
+}

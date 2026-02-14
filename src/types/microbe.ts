@@ -11,6 +11,7 @@ export interface Taxonomy {
 export interface Microbe {
   id: string;
   name: string;
+  scientificName: string;
   type: MicrobeType;
   abundance: number;
   role: MicrobeRole;

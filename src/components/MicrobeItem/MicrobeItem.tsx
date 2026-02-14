@@ -24,7 +24,10 @@ export default function MicrobeItem({ microbe }: MicrobeItemProps) {
         </div>
       </div>
 
-      <h3 className={styles.microbeName}>{microbe.name}</h3>
+      <div className={styles.microbeHeader}>
+        <h3 className={styles.microbeName}>{microbe.scientificName}</h3>
+        <p className={styles.microbeSpecies}>{microbe.name}</p>
+      </div>
 
       <div className={styles.abundanceContainer}>
         <div className={styles.abundanceLabel}>Relative Abundance</div>

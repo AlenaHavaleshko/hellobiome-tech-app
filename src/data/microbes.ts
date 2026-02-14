@@ -4,6 +4,7 @@ export const microbes: Microbe[] = [
   {
     id: '1',
     name: 'acnes',
+    scientificName: 'Cutibacterium acnes',
     type: 'bacteria',
     abundance: 28,
     role: 'beneficial',
@@ -15,6 +16,7 @@ export const microbes: Microbe[] = [
   {
     id: '2',
     name: 'epidermidis',
+    scientificName: 'Staphylococcus epidermidis',
     type: 'bacteria',
     abundance: 22,
     role: 'beneficial',
@@ -26,6 +28,7 @@ export const microbes: Microbe[] = [
   {
     id: '3',
     name: 'aureus',
+    scientificName: 'Staphylococcus aureus',
     type: 'bacteria',
     abundance: 5,
     role: 'pathogenic',
@@ -37,6 +40,7 @@ export const microbes: Microbe[] = [
   {
     id: '4',
     name: 'luteus',
+    scientificName: 'Micrococcus luteus',
     type: 'bacteria',
     abundance: 7,
     role: 'neutral',
@@ -48,6 +52,7 @@ export const microbes: Microbe[] = [
   {
     id: '5',
     name: 'kroppenstedtii',
+    scientificName: 'Corynebacterium kroppenstedtii',
     type: 'bacteria',
     abundance: 10,
     role: 'neutral',
@@ -59,6 +64,7 @@ export const microbes: Microbe[] = [
   {
     id: '6',
     name: 'granulosum',
+    scientificName: 'Propionibacterium granulosum',
     type: 'bacteria',
     abundance: 9,
     role: 'beneficial',
@@ -70,6 +76,7 @@ export const microbes: Microbe[] = [
   {
     id: '7',
     name: 'johnsonii',
+    scientificName: 'Acinetobacter johnsonii',
     type: 'bacteria',
     abundance: 4,
     role: 'neutral',
@@ -81,6 +88,7 @@ export const microbes: Microbe[] = [
   {
     id: '8',
     name: 'mitis',
+    scientificName: 'Streptococcus mitis',
     type: 'bacteria',
     abundance: 3,
     role: 'neutral',
@@ -92,6 +100,7 @@ export const microbes: Microbe[] = [
   {
     id: '9',
     name: 'aeruginosa',
+    scientificName: 'Pseudomonas aeruginosa',
     type: 'bacteria',
     abundance: 2,
     role: 'pathogenic',
@@ -103,6 +112,7 @@ export const microbes: Microbe[] = [
   {
     id: '10',
     name: 'epidermidis',
+    scientificName: 'Brevibacterium epidermidis',
     type: 'bacteria',
     abundance: 6,
     role: 'neutral',
@@ -114,6 +124,7 @@ export const microbes: Microbe[] = [
   {
     id: '11',
     name: 'globosa',
+    scientificName: 'Malassezia globosa',
     type: 'fungi',
     abundance: 15,
     role: 'neutral',
@@ -125,6 +136,7 @@ export const microbes: Microbe[] = [
   {
     id: '12',
     name: 'restricta',
+    scientificName: 'Malassezia restricta',
     type: 'fungi',
     abundance: 13,
     role: 'beneficial',
@@ -136,6 +148,7 @@ export const microbes: Microbe[] = [
   {
     id: '13',
     name: 'albicans',
+    scientificName: 'Candida albicans',
     type: 'fungi',
     abundance: 6,
     role: 'pathogenic',
@@ -147,6 +160,7 @@ export const microbes: Microbe[] = [
   {
     id: '14',
     name: 'parapsilosis',
+    scientificName: 'Candida parapsilosis',
     type: 'fungi',
     abundance: 5,
     role: 'neutral',
@@ -158,6 +172,7 @@ export const microbes: Microbe[] = [
   {
     id: '15',
     name: 'niger',
+    scientificName: 'Aspergillus niger',
     type: 'fungi',
     abundance: 3,
     role: 'pathogenic',
@@ -169,6 +184,7 @@ export const microbes: Microbe[] = [
   {
     id: '16',
     name: 'fumigatus',
+    scientificName: 'Aspergillus fumigatus',
     type: 'fungi',
     abundance: 2,
     role: 'pathogenic',
@@ -180,6 +196,7 @@ export const microbes: Microbe[] = [
   {
     id: '17',
     name: 'cladosporioides',
+    scientificName: 'Cladosporium cladosporioides',
     type: 'fungi',
     abundance: 4,
     role: 'neutral',
@@ -191,6 +208,7 @@ export const microbes: Microbe[] = [
   {
     id: '18',
     name: 'alternata',
+    scientificName: 'Alternaria alternata',
     type: 'fungi',
     abundance: 3,
     role: 'neutral',
@@ -202,6 +220,7 @@ export const microbes: Microbe[] = [
   {
     id: '19',
     name: 'neoformans',
+    scientificName: 'Cryptococcus neoformans',
     type: 'fungi',
     abundance: 1,
     role: 'pathogenic',
@@ -213,11 +232,204 @@ export const microbes: Microbe[] = [
   {
     id: '20',
     name: 'mucilaginosa',
+    scientificName: 'Rhodotorula mucilaginosa',
     type: 'fungi',
     abundance: 2,
     role: 'neutral',
     taxonomy: {
       genus: 'Rhodotorula',
+      phylum: 'Basidiomycota',
+    },
+  },
+    {
+    id: '21',
+    name: 'hominis',
+    scientificName: 'Staphylococcus hominis',
+    type: 'bacteria',
+    abundance: 8,
+    role: 'neutral',
+    taxonomy: {
+      genus: 'Staphylococcus',
+      phylum: 'Firmicutes',
+    },
+  },
+  {
+    id: '22',
+    name: 'capitis',
+    scientificName: 'Staphylococcus capitis',
+    type: 'bacteria',
+    abundance: 7,
+    role: 'neutral',
+    taxonomy: {
+      genus: 'Staphylococcus',
+      phylum: 'Firmicutes',
+    },
+  },
+  {
+    id: '23',
+    name: 'xerosis',
+    scientificName: 'Corynebacterium xerosis',
+    type: 'bacteria',
+    abundance: 6,
+    role: 'neutral',
+    taxonomy: {
+      genus: 'Corynebacterium',
+      phylum: 'Actinobacteria',
+    },
+  },
+  {
+    id: '24',
+    name: 'minutissimum',
+    scientificName: 'Corynebacterium minutissimum',
+    type: 'bacteria',
+    abundance: 5,
+    role: 'pathogenic',
+    taxonomy: {
+      genus: 'Corynebacterium',
+      phylum: 'Actinobacteria',
+    },
+  },
+  {
+    id: '25',
+    name: 'faecalis',
+    scientificName: 'Enterococcus faecalis',
+    type: 'bacteria',
+    abundance: 4,
+    role: 'pathogenic',
+    taxonomy: {
+      genus: 'Enterococcus',
+      phylum: 'Firmicutes',
+    },
+  },
+  {
+    id: '26',
+    name: 'casei',
+    scientificName: 'Lactobacillus casei',
+    type: 'bacteria',
+    abundance: 9,
+    role: 'beneficial',
+    taxonomy: {
+      genus: 'Lactobacillus',
+      phylum: 'Firmicutes',
+    },
+  },
+  {
+    id: '27',
+    name: 'plantarum',
+    scientificName: 'Lactobacillus plantarum',
+    type: 'bacteria',
+    abundance: 11,
+    role: 'beneficial',
+    taxonomy: {
+      genus: 'Lactobacillus',
+      phylum: 'Firmicutes',
+    },
+  },
+  {
+    id: '28',
+    name: 'reuteri',
+    scientificName: 'Lactobacillus reuteri',
+    type: 'bacteria',
+    abundance: 8,
+    role: 'beneficial',
+    taxonomy: {
+      genus: 'Lactobacillus',
+      phylum: 'Firmicutes',
+    },
+  },
+  {
+    id: '29',
+    name: 'glabrata',
+    scientificName: 'Candida glabrata',
+    type: 'fungi',
+    abundance: 5,
+    role: 'pathogenic',
+    taxonomy: {
+      genus: 'Candida',
+      phylum: 'Ascomycota',
+    },
+  },
+  {
+    id: '30',
+    name: 'krusei',
+    scientificName: 'Candida krusei',
+    type: 'fungi',
+    abundance: 3,
+    role: 'pathogenic',
+    taxonomy: {
+      genus: 'Candida',
+      phylum: 'Ascomycota',
+    },
+  },
+  {
+    id: '31',
+    name: 'tropicalis',
+    scientificName: 'Candida tropicalis',
+    type: 'fungi',
+    abundance: 4,
+    role: 'neutral',
+    taxonomy: {
+      genus: 'Candida',
+      phylum: 'Ascomycota',
+    },
+  },
+  {
+    id: '32',
+    name: 'flavus',
+    scientificName: 'Aspergillus flavus',
+    type: 'fungi',
+    abundance: 2,
+    role: 'pathogenic',
+    taxonomy: {
+      genus: 'Aspergillus',
+      phylum: 'Ascomycota',
+    },
+  },
+  {
+    id: '33',
+    name: 'oryzae',
+    scientificName: 'Aspergillus oryzae',
+    type: 'fungi',
+    abundance: 3,
+    role: 'beneficial',
+    taxonomy: {
+      genus: 'Aspergillus',
+      phylum: 'Ascomycota',
+    },
+  },
+  {
+    id: '34',
+    name: 'herbarum',
+    scientificName: 'Cladosporium herbarum',
+    type: 'fungi',
+    abundance: 4,
+    role: 'neutral',
+    taxonomy: {
+      genus: 'Cladosporium',
+      phylum: 'Ascomycota',
+    },
+  },
+  {
+    id: '35',
+    name: 'pullulans',
+    scientificName: 'Aureobasidium pullulans',
+    type: 'fungi',
+    abundance: 2,
+    role: 'neutral',
+    taxonomy: {
+      genus: 'Aureobasidium',
+      phylum: 'Ascomycota',
+    },
+  },
+  {
+    id: '36',
+    name: 'rubra',
+    scientificName: 'Sporobolomyces rubra',
+    type: 'fungi',
+    abundance: 1,
+    role: 'neutral',
+    taxonomy: {
+      genus: 'Sporobolomyces',
       phylum: 'Basidiomycota',
     },
   },

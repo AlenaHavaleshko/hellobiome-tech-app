@@ -1,73 +1,45 @@
-"use client";
-
-import { useMemo, useState } from "react";
+import { Metadata } from "next";
 import { microbes } from "@/data/microbes";
-import { Microbe } from "@/types/microbe";
-import SortMicrobes from "@/components/SortMicrobes/SortMicrobes";
-import FilterMicrobes from "@/components/FilterMicrobes/FilterMicrobes";
-import MicrobeList from "@/components/MicrobeList/MicrobeList";
-import styles from "./page.module.css";
+import MicrobeExplorer from "@/components/MicrobeExplorer/MicrobeExplorer";
 
-type SortOrder = "asc" | "desc";
-type FilterOption = "all" | "bacteria" | "fungi";
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Explore skin microbiome data with interactive filters and sorting. View bacteria and fungi with their relative abundance and roles in skin health.",
+};
 
+// This is a Server Component by default in Next.js App Router
 export default function Home() {
-  const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
-  const [filterOption, setFilterOption] = useState<FilterOption>("all");
-
-  const sortedAndFilteredMicrobes = useMemo(() => {
-    let result: Microbe[] = [...microbes];
-
-    if (filterOption !== "all") {
-      result = result.filter((microbe) => microbe.type === filterOption);
-    }
-    if (sortOrder === "asc") {
-      result.sort((a, b) => a.abundance - b.abundance);
-    } else if (sortOrder === "desc") {
-      result.sort((a, b) => b.abundance - a.abundance);
-    }
-    return result;
-  }, [sortOrder, filterOption]);
+  // Data is fetched on the server
+  // In a real app, this could be an async function fetching from a database
+  const microbeData = microbes;
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
-          <div className={styles.headerIcon}>🔬</div>
-          <div className={styles.headerText}>
-            <h1 className={styles.title}>Skin Microbiome Explorer</h1>
-            <p className={styles.subtitle}>
-              Discover and analyze the diverse microorganisms living on human
-              skin
-            </p>
-          </div>
-        </div>
-        <div className={styles.stats}>
-          <div className={styles.statCard}>
-            <div className={styles.statValue}>{microbes.length}</div>
-            <div className={styles.statLabel}>Total Microbes</div>
-          </div>
-          <div className={styles.statCard}>
-            <div className={styles.statValue}>
-              {sortedAndFilteredMicrobes.length}
-            </div>
-            <div className={styles.statLabel}>Filtered Results</div>
-          </div>
-        </div>
-      </header>
+    <>
+      {/* Server-rendered metadata for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Dataset",
+            name: "Skin Microbiome Database",
+            description:
+              "Comprehensive database of skin microorganisms including bacteria and fungi",
+            url: typeof window !== "undefined" ? window.location.href : "",
+            keywords: "microbiome, skin bacteria, fungi, dermatology",
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            isAccessibleForFree: true,
+            creator: {
+              "@type": "Organization",
+              name: "HelloBiome Tech",
+            },
+          }),
+        }}
+      />
 
-      <main className={styles.main}>
-        <div className={styles.controls}>
-          <FilterMicrobes value={filterOption} onChange={setFilterOption} />
-          <SortMicrobes value={sortOrder} onChange={setSortOrder} />
-        </div>
-
-        <MicrobeList microbes={sortedAndFilteredMicrobes} />
-      </main>
-
-      <footer className={styles.footer}>
-        <p>Microbiome Research Dashboard © 2026</p>
-      </footer>
-    </div>
+      {/* Client component handles interactivity */}
+      <MicrobeExplorer initialMicrobes={microbeData} />
+    </>
   );
 }
