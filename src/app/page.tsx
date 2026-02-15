@@ -8,15 +8,12 @@ export const metadata: Metadata = {
     "Explore skin microbiome data with interactive filters and sorting. View bacteria and fungi with their relative abundance and roles in skin health.",
 };
 
-// This is a Server Component by default in Next.js App Router
 export default function Home() {
-  // Data is fetched on the server
-  // In a real app, this could be an async function fetching from a database
+
   const microbeData = microbes;
 
   return (
     <>
-      {/* Server-rendered metadata for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -37,8 +34,6 @@ export default function Home() {
           }),
         }}
       />
-
-      {/* Client component handles interactivity */}
       <MicrobeExplorer initialMicrobes={microbeData} />
     </>
   );

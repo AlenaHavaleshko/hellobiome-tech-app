@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3125 2628" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <clipPath id="vCut">
+      <path d="M 0,0 L 3125,0 L 3125,2528 L 1562.5,2628 L 0,2528 Z"/>
+    </clipPath>
+  </defs>
+  
+  <g clip-path="url(#vCut)">
+    <!-- Main yellow background -->
+    <rect width="3125" height="2628" fill="#f0e691"/>
+    
+    <!-- Organic blob shapes for decoration -->
+    <ellipse cx="400" cy="300" rx="280" ry="320" fill="#e5de7a" opacity="0.5"/>
+    <ellipse cx="2700" cy="400" rx="350" ry="280" fill="#f5efaa" opacity="0.6"/>
+    <ellipse cx="1500" cy="200" rx="200" ry="250" fill="#ebe484" opacity="0.4"/>
+    
+    <!-- Bottom organic shapes -->
+    <ellipse cx="800" cy="2300" rx="400" ry="350" fill="#e5de7a" opacity="0.35"/>
+    <ellipse cx="2400" cy="2200" rx="380" ry="420" fill="#f5efaa" opacity="0.4"/>
+    
+    <!-- Small accent circles -->
+    <circle cx="1800" cy="800" r="120" fill="#ffffff" opacity="0.3"/>
+    <circle cx="600" cy="1200" r="80" fill="#ffffff" opacity="0.25"/>
+    <circle cx="2500" cy="1400" r="100" fill="#ffffff" opacity="0.28"/>
+    <circle cx="1200" cy="1800" r="90" fill="#ffffff" opacity="0.22"/>
+  </g>
+</svg>

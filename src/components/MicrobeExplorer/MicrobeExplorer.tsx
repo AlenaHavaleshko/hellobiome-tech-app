@@ -67,6 +67,10 @@ export default function MicrobeExplorer({
   return (
     <div className={styles.container}>
       <header className={styles.header}>
+        <div className={styles.decorCircle1}></div>
+        <div className={styles.decorCircle2}></div>
+        <div className={styles.decorCircle3}></div>
+
         <div className={styles.headerContent}>
           <div className={styles.headerIcon}>🔬</div>
           <div className={styles.headerText}>

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #ffffff;
   padding: 40px;
 }
 
@@ -79,26 +79,27 @@
 }
 
 .retryButton {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #7fa99b;
   color: white;
   border: none;
 }
 
 .retryButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(127, 169, 155, 0.3);
+  background: #6d8e82;
 }
 
 .homeButton {
   background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: #7fa99b;
+  border: 1px solid #7fa99b;
 }
 
 .homeButton:hover {
-  background: #667eea;
+  background: #7fa99b;
   color: white;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 640px) {
@@ -142,10 +143,10 @@
 
   .homeButton {
     background: #2d2d2d;
-    border-color: #667eea;
+    border-color: #7fa99b;
   }
 
   .homeButton:hover {
-    background: #667eea;
+    background: #7fa99b;
   }
 }

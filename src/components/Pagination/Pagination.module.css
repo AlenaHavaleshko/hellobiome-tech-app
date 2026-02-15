@@ -11,25 +11,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  height: 44px;
+  min-width: 40px;
+  height: 40px;
   padding: 8px;
-  border: 2px solid #e9ecef;
-  border-radius: 12px;
+  border: 2px solid var(--text-dark);
+  border-radius: 8px;
   background-color: white;
-  color: #495057;
-  font-size: 15px;
+  color: var(--text-dark);
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .paginationButton:hover:not(:disabled) {
-  border-color: #667eea;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  border-color: var(--text-dark);
+  background: var(--accent-color);
+  color: var(--text-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .paginationButton:disabled {
@@ -62,10 +62,10 @@
 }
 
 .pageButton.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-color: #667eea;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  background: var(--accent-color);
+  border-color: var(--text-dark);
+  color: var(--text-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .ellipsis {
@@ -120,7 +120,7 @@
   }
 
   .paginationButton:hover:not(:disabled) {
-    border-color: #667eea;
+    border-color: var(--nv-c-1);
   }
 
   .paginationButton:disabled {

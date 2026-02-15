@@ -3,8 +3,6 @@ import { microbes } from '@/data/microbes';
 
 export async function GET() {
   try {
-    // Simulate API delay (optional)
-    // await new Promise(resolve => setTimeout(resolve, 100));
     
     return NextResponse.json({
       success: true,
