@@ -1,25 +1,19 @@
 "use client";
 
-import type { MicrobeType } from "@/types/microbe";
+import { useGlobalStore } from "@/store/useGlobalStore";
+
+type FilterOption = "all" | "bacteria" | "fungi";
 import styles from "./FilterMicrobes.module.css";
 
-type FilterOption = "all" | MicrobeType;
-
-interface FilterMicrobesProps {
-  value: FilterOption;
-  onChange: (option: FilterOption) => void;
-}
-
 const filterOptions = [
-  { value: "all" as FilterOption, label: "All", icon: "🔬" },
-  { value: "bacteria" as FilterOption, label: "Bacteria", icon: "🦠" },
-  { value: "fungi" as FilterOption, label: "Fungi", icon: "🍄" },
+  { value: "all", label: "All", icon: "🔬" },
+  { value: "bacteria", label: "Bacteria", icon: "🦠" },
+  { value: "fungi", label: "Fungi", icon: "🍄" },
 ];
 
-export default function FilterMicrobes({
-  value,
-  onChange,
-}: FilterMicrobesProps) {
+export default function FilterMicrobes() {
+  const filterOption = useGlobalStore((s) => s.filterOption);
+  const setFilterOption = useGlobalStore((s) => s.setFilterOption);
   return (
     <div className={styles.filterContainer}>
       <label className={styles.filterLabel}>Filter by Type</label>
@@ -27,9 +21,9 @@ export default function FilterMicrobes({
         {filterOptions.map((option) => (
           <button
             key={option.value}
-            onClick={() => onChange(option.value)}
-            className={`${styles.filterButton} ${value === option.value ? styles.active : ""} ${styles[option.value]}`}
-            aria-pressed={value === option.value}
+            onClick={() => setFilterOption(option.value as FilterOption)}
+            className={`${styles.filterButton} ${filterOption === option.value ? styles.active : ""} ${styles[option.value]}`}
+            aria-pressed={filterOption === option.value}
           >
             <span className={styles.filterIcon}>{option.icon}</span>
             <span className={styles.filterText}>{option.label}</span>

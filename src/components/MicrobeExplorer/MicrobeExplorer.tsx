@@ -1,15 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useGlobalStore } from "@/store/useGlobalStore";
 import type { Microbe } from "@/types/microbe";
-import SortMicrobes from "@/components/SortMicrobes/SortMicrobes";
+import { SortMicrobes } from "@/components/SortMicrobes/SortMicrobes";
 import FilterMicrobes from "@/components/FilterMicrobes/FilterMicrobes";
 import MicrobeList from "@/components/MicrobeList/MicrobeList";
 import Pagination from "@/components/Pagination/Pagination";
 import styles from "./MicrobeExplorer.module.css";
 
-type SortOrder = "asc" | "desc";
-type FilterOption = "all" | "bacteria" | "fungi";
+// Типы уже есть в useGlobalStore
 
 const ITEMS_PER_PAGE = 9;
 
@@ -20,9 +20,9 @@ interface MicrobeExplorerProps {
 export default function MicrobeExplorer({
   initialMicrobes,
 }: MicrobeExplorerProps) {
-  const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
-  const [filterOption, setFilterOption] = useState<FilterOption>("all");
-  const [currentPage, setCurrentPage] = useState(1);
+  const filterOption = useGlobalStore((s) => s.filterOption);
+  const sortOrder = useGlobalStore((s) => s.sortOrder);
+  const currentPage = useGlobalStore((s) => s.currentPage);
 
   const sortedAndFilteredMicrobes = useMemo(() => {
     let result: Microbe[] = [...initialMicrobes];
@@ -47,22 +47,6 @@ export default function MicrobeExplorer({
     const endIndex = startIndex + ITEMS_PER_PAGE;
     return sortedAndFilteredMicrobes.slice(startIndex, endIndex);
   }, [sortedAndFilteredMicrobes, currentPage]);
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    // Scroll to top of the list
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleFilterChange = (option: FilterOption) => {
-    setFilterOption(option);
-    setCurrentPage(1);
-  };
-
-  const handleSortChange = (order: SortOrder) => {
-    setSortOrder(order);
-    setCurrentPage(1);
-  };
 
   return (
     <div className={styles.container}>
@@ -97,17 +81,13 @@ export default function MicrobeExplorer({
 
       <main className={styles.main}>
         <div className={styles.controls}>
-          <FilterMicrobes value={filterOption} onChange={handleFilterChange} />
-          <SortMicrobes value={sortOrder} onChange={handleSortChange} />
+          <FilterMicrobes />
+          <SortMicrobes />
         </div>
 
         <MicrobeList microbes={paginatedMicrobes} />
 
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
+        <Pagination totalPages={totalPages} />
       </main>
 
       <footer className={styles.footer}>

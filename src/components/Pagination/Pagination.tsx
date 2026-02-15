@@ -1,17 +1,14 @@
 import styles from "./Pagination.module.css";
 
+import { useGlobalStore } from "@/store/useGlobalStore";
 interface PaginationProps {
-  currentPage: number;
   totalPages: number;
-  onPageChange: (page: number) => void;
 }
 
-function Pagination({
-  currentPage,
-  totalPages,
-  onPageChange,
-}: PaginationProps) {
-  // Hide pagination 
+function Pagination({ totalPages }: PaginationProps) {
+  const currentPage = useGlobalStore((s) => s.currentPage);
+  const setCurrentPage = useGlobalStore((s) => s.setCurrentPage);
+  // Hide pagination
   if (!totalPages || totalPages <= 1) {
     return null;
   }
@@ -75,29 +72,16 @@ function Pagination({
     });
   };
 
-  const handleFirstPage = () => {
-    onPageChange(1);
-  };
-
+  const handleFirstPage = () => setCurrentPage(1);
   const handlePrevPage = () => {
-    if (validCurrentPage > 1) {
-      onPageChange(validCurrentPage - 1);
-    }
+    if (validCurrentPage > 1) setCurrentPage(validCurrentPage - 1);
   };
-
   const handleNextPage = () => {
-    if (validCurrentPage < validTotalPages) {
-      onPageChange(validCurrentPage + 1);
-    }
+    if (validCurrentPage < validTotalPages)
+      setCurrentPage(validCurrentPage + 1);
   };
-
-  const handleLastPage = () => {
-    onPageChange(validTotalPages);
-  };
-
-  const handlePageClick = (page: number) => {
-    onPageChange(page);
-  };
+  const handleLastPage = () => setCurrentPage(validTotalPages);
+  const handlePageClick = (page: number) => setCurrentPage(page);
 
   const pageNumbers = getPageNumbers();
   const isFirstPage = validCurrentPage === 1;

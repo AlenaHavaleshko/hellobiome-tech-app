@@ -1,30 +1,26 @@
 "use client";
 
+import { useGlobalStore } from "@/store/useGlobalStore";
 import styles from "./SortMicrobes.module.css";
 
-type SortOrder = "asc" | "desc";
-
-interface SortMicrobesProps {
-  value: SortOrder;
-  onChange: (order: SortOrder) => void;
-}
-
-export default function SortMicrobes({ value, onChange }: SortMicrobesProps) {
+export function SortMicrobes() {
+  const sortOrder = useGlobalStore((s) => s.sortOrder);
+  const setSortOrder = useGlobalStore((s) => s.setSortOrder);
   const toggleSort = () => {
-    const newValue = value === "asc" ? "desc" : "asc";
-    onChange(newValue);
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
-
   return (
     <div className={styles.sortContainer}>
       <label className={styles.sortLabel}>Sort by Abundance</label>
       <button onClick={toggleSort} className={styles.sortButton}>
-        <span className={styles.sortIcon}>{value === "asc" ? "↑" : "↓"}</span>
+        <span className={styles.sortIcon}>
+          {sortOrder === "asc" ? "↑" : "↓"}
+        </span>
         <span className={styles.sortText}>
-          {value === "asc" ? "Ascending" : "Descending"}
+          {sortOrder === "asc" ? "Ascending" : "Descending"}
         </span>
         <span className={styles.sortBadge}>
-          {value === "asc" ? "Low to High" : "High to Low"}
+          {sortOrder === "asc" ? "Low to High" : "High to Low"}
         </span>
       </button>
     </div>
