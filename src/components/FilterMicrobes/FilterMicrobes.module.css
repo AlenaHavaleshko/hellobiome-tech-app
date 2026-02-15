@@ -1,3 +1,10 @@
+/* Базовые классы для кнопок фильтрации по типу */
+.bacteria {
+  /* Можно добавить специфичный цвет, если нужно */
+}
+.fungi {
+  /* Можно добавить специфичный цвет, если нужно */
+}
 .filterContainer {
   margin-bottom: 24px;
 }
@@ -72,11 +79,12 @@
 }
 
 .filterButton.active.bacteria {
-  background: var(--accent-color);
+  background: var(--accent-mint);
+  color: var(--text-dark);
 }
 
 .filterButton.active.fungi {
-  background: var(--accent-mint);
+  background: var(--pathogenic-text);
   border-color: var(--text-dark);
   color: var(--text-dark);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);

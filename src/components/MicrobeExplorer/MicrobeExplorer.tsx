@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { useGlobalStore } from "@/store/useGlobalStore";
 import type { Microbe } from "@/types/microbe";
 import { SortMicrobes } from "@/components/SortMicrobes/SortMicrobes";
@@ -8,8 +8,6 @@ import FilterMicrobes from "@/components/FilterMicrobes/FilterMicrobes";
 import MicrobeList from "@/components/MicrobeList/MicrobeList";
 import Pagination from "@/components/Pagination/Pagination";
 import styles from "./MicrobeExplorer.module.css";
-
-// Типы уже есть в useGlobalStore
 
 const ITEMS_PER_PAGE = 9;
 
@@ -47,6 +45,16 @@ export default function MicrobeExplorer({
     const endIndex = startIndex + ITEMS_PER_PAGE;
     return sortedAndFilteredMicrobes.slice(startIndex, endIndex);
   }, [sortedAndFilteredMicrobes, currentPage]);
+
+  // Scroll-to-top button
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  useEffect(() => {
+    const onScroll = () => {
+      setShowScrollTop(window.scrollY > 200);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -93,6 +101,16 @@ export default function MicrobeExplorer({
       <footer className={styles.footer}>
         <p>Microbiome Research Dashboard © 2026</p>
       </footer>
+
+      {showScrollTop && (
+        <button
+          className={styles.scrollTopBtn}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Scroll to top"
+        >
+          <span style={{ fontSize: "1.5em", display: "block" }}>↑</span> top
+        </button>
+      )}
     </div>
   );
 }

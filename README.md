@@ -1,6 +1,6 @@
 # Skin Microbiome Explorer 🔬
 
-A modern web application for exploring and analyzing skin microbiome data. Built with React, Next.js, and TypeScript.
+A modern web application for exploring and analyzing skin microbiome data. Built with React, Next.js, TypeScript, and Zustand for global state management.
 
 ## 📋 Project Overview
 
@@ -10,6 +10,8 @@ This application displays information about bacteria and fungi that live on huma
 - Filter by type (bacteria/fungi)
 - Sort by relative abundance (ascending/descending)
 - Explore their roles (beneficial/neutral/pathogenic)
+- Use a global state (Zustand) for all UI controls
+- Instantly scroll to top with a floating button
 
 ## 🚀 How to Run the Project Locally
 
@@ -23,7 +25,7 @@ This application displays information about bacteria and fungi that live on huma
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/AlenaHavaleshko/hellobiome-tech-app
 cd hellobiome-tech-app
 ```
 
@@ -54,228 +56,65 @@ pnpm dev
 ```
 src/
 ├── app/
-│   ├── api/
-│   │   ├── microbes/         # API route for microbes data
-│   │   └── stats/            # API route for statistics
 │   ├── globals.css           # Global styles and CSS variables
 │   ├── layout.tsx            # Root layout with SEO metadata
 │   ├── page.tsx              # Main page (Server Component)
-│   ├── page.module.css       # Page-specific styles
-│   ├── loading.tsx           # Loading UI
-│   ├── error.tsx             # Error boundary UI
-│   ├── not-found.tsx         # 404 page
-│   └── sitemap.ts            # Dynamic sitemap generation
 ├── components/
-│   ├── FilterMicrobes/       # Filter controls component
+│   ├── FilterMicrobes/       # Filter controls (uses Zustand)
 │   ├── MicrobeExplorer/      # Main explorer (Client Component)
 │   ├── MicrobeItem/          # Individual microbe card component
 │   ├── MicrobeList/          # Microbe list container component
-│   └── SortMicrobes/         # Sort controls component
+│   ├── Pagination/           # Pagination (uses Zustand)
+│   └── SortMicrobes/         # Sort controls (uses Zustand)
 ├── data/
 │   └── microbes.ts           # Static mock data with taxonomy
+├── store/
+│   └── useGlobalStore.ts     # Zustand global state store
 ├── types/
 │   └── microbe.ts            # TypeScript type definitions
 ├── utils/
 │   └── filterSort.ts         # Utility functions
-└── middleware.ts             # Edge middleware for security headers
 public/
 ├── icon.svg                  # App icon
 ├── manifest.json             # PWA manifest
 └── robots.txt                # SEO robots file
 ```
 
-## ⚡ Next.js Features Implementation
+## ⚡ Next.js & Zustand Features
 
-This project leverages modern Next.js 15 features:
-
-### 🎯 App Router Architecture
-
-- **Server Components** - Main page renders on server for better performance
-- **Client Components** - Interactive UI marked with 'use client'
-- **File-based Routing** - Automatic routing based on folder structure
-
-### 🔧 API Routes
-
-- **REST API endpoints** at `/api/microbes` and `/api/stats`
-- GET and POST methods support
-- Type-safe responses with TypeScript
-
-### 📊 SEO & Metadata
-
-- **Comprehensive metadata** - Title, description, keywords
-- **Open Graph tags** - Social media preview support
-- **Twitter Card** - Optimized Twitter sharing
-- **Structured Data** - JSON-LD schema for search engines
-- **Dynamic sitemap** - Auto-generated sitemap.xml
-- **robots.txt** - Search engine crawling configuration
-
-### 🎨 Error Handling
-
-- **error.tsx** - Global error boundary with retry functionality
-- **loading.tsx** - Suspense loading states
-- **not-found.tsx** - Custom 404 page
-
-### 🔒 Security & Performance
-
-- **Middleware** - Edge middleware for security headers
-- **Font Optimization** - next/font for automatic font optimization
-- **PWA Support** - Web app manifest for installability
-- **CSP Headers** - Content Security Policy headers
-
-### 🌐 Environment Variables
-
-- `.env.local` - Local development configuration
-- `.env.example` - Template for environment variables
-- `NEXT_PUBLIC_BASE_URL` for deployment configuration
+- **App Router Architecture** (Next.js 15+)
+- **Server Components** for performance
+- **Client Components** for interactivity
+- **Global state management** with Zustand (filter, sort, pagination)
+- **No prop drilling**: all controls sync via store
+- **Floating scroll-to-top button** (appears when scrolled down)
 
 ## 🎨 Features
 
-### Current Features
-
 - ✅ Display list of microorganisms
-- ✅ Filter by type (all/bacteria/fungi)
-- ✅ Sort by abundance (ascending/descending)
+- ✅ Filter by type (all/bacteria/fungi) — global state
+- ✅ Sort by abundance (ascending/descending) — global state
+- ✅ Pagination — global state
 - ✅ Beautiful, responsive UI with CSS Modules
 - ✅ Animated components and interactions
-- ✅ Dark mode support
 - ✅ TypeScript for type safety
 - ✅ Visual indicators for microbe roles
 - ✅ Abundance visualization with progress bars
 - ✅ Statistics dashboard
 - ✅ **Server-side rendering** (Next.js Server Components)
-- ✅ **API Routes** for data endpoints
 - ✅ **SEO optimized** with comprehensive metadata
 - ✅ **Error boundaries** and loading states
 - ✅ **PWA ready** with manifest
 - ✅ **Security headers** via middleware
+- ✅ **Scroll-to-top button** in lower right corner
 
 ### Design Highlights
 
-- 🎨 Modern gradient-based design
+- 🎨 Modern yellow/beige palette, organic shapes, V-shaped header
 - 🌈 Color-coded microbe types and roles
 - ✨ Smooth animations and transitions
 - 📱 Fully responsive layout
-- 🌙 Automatic dark mode s 5
-- **Styling:** CSS Modules
-- **React:** 19
-- **Node.js:** 18+
-- **Features:**
-  - Server & Client Components
-  - API Routes
-  - Middleware6-7 hours were spent on this project:
-
-- Project setup and structure: 30 min
-- Component development: 2 hours
-- Styling and animations: 1.5 hours
-- Next.js features implementation: 1.5 hours
-- SEO, API routes, error handling: 1 hour
-- Testing and refinements: 30 min
-
-The application includes REST API endpoints:
-
-### GET `/api/microbes`
-
-Returns all microorganisms data
-
-```json
-{
-  "success": true,
-  "data": [...],
-  "count": 20
-}
-```
-
-### POST `/api/microbes`
-
-Filter microorganisms by type and role
-
-```json
-{
-  "type": "bacteria",
-  "role": "beneficial"
-}
-```
-
-### GET `/api/stats`
-
-Get statistics about the dataset
-
-````json
-{
-  "success": true,
-  "data": {
-    "types": ["bacteria", "fungi"],
-    "roles": ["beneficial", "neutral", "pathogenic"],
-    "totalSpecies": 20
-  }
-}
-```s Used
-
-- **Framework:** Next.js 15 (App Router)
-- **Language:** TypeScript
-- **Styling:** CSS Modules
-- **React:** 19
-- **Node.js:** 18+
-
-## ⏱️ Time Spent
-
-Approximately 4-5 hours were spent on this project:
-
-- Project setup and structure: 30 min
-- Component development: 2 hours
-- Styling and animations: 1.5 hours
-- Testing and refinements: 1 hour
-
-## 🔮 Future Improvements
-
-Given more time, I would implement:
-
-### Features
-
-- [ ] Search functionality by microbe name
-- [ ] Advanced filtering (by role, abundance range)
-- [ ] Data visualization charts (pie chart for type distribution, bar chart for abundance)
-- [ ] Detailed view/modal for each microbe with more information
-- [ ] Favorites/bookmarking system
-- [ ] Export data functionality (CSV, JSON)
-- [ ] Comparison mode to compare multiple microbes
-
-### Technical Enhancements
-
-- [ ] Unit tests with Jest and React Testing Library
-- [ ] E2E tests with Playwright
-- [ ] Accessibility improvements (ARIA labels, keyboard navigation)
-- [ ] Performance optimization with React.memo and useMemo
-- [ ] Backend integration with API routes
-- [ ] Database integration (PostgreSQL/MongoDB)
-- [ ] Authentication and user profiles
-- [ ] PWA support for offline access
-- [ ] Internationalization (i18n)
-
-### UI/UX
-
-- [ ] More sophisticated animations with Framer Motion
-- [ ] Loading states and skeletons
-- [ ] Error boundaries and error handling
-- [ ] Toast notifications for user actions
-- [ ] Theme customization options
-- [ ] Print-friendly view
-- [ ] Share functionality
-
-## 📦 Build & Deploy
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-````
-
-### Deploy on Vercel
-
-The easiest way to deploy this Next.js app is to use [Vercel](https://vercel.com):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=<your-repo-url>)
+- 🖌️ Font-family: Poppins (matches hellobio.me)
 
 ## 📝 License
 
@@ -284,3 +123,24 @@ This project was created as a technical challenge assignment.
 ---
 
 Built with ❤️ for microbiome research
+
+## 🔮 What I would improve with more time
+
+If I had more time, I would suggest the following improvements:
+
+- Add search functionality for microbe names and taxonomy
+- Implement advanced filtering (by role, abundance range, taxonomy)
+- Add interactive data visualization (charts, graphs, heatmaps)
+- Create detailed modal views for each microbe with more scientific info
+- Add favorites/bookmarking and comparison features
+- Enable export of data (CSV, JSON)
+- Improve accessibility (ARIA, keyboard navigation)
+- Add unit and E2E tests (Jest, Playwright)
+- Optimize performance (memoization, lazy loading)
+- Integrate backend/database for real data
+- Add authentication and user profiles
+- Support offline mode (PWA)
+- Add internationalization (i18n)
+- Enhance UI/UX with more animations, skeleton loaders, toast notifications
+- Allow theme customization and print-friendly views
+- Add share functionality for research and social media

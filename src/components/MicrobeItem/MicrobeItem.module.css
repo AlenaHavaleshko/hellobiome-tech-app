@@ -50,13 +50,12 @@
 }
 
 .bacteria .typeBadge {
-  background: var(--accent-muted);
-  color: var(--text-dark);
-}
-
-.fungi .typeBadge {
   background: var(--accent-mint);
   color: var(--text-dark);
+}
+.fungi .typeBadge {
+  background:  var(--pathogenic-text);
+  color: var(--text-dark);    
 }
 
 .typeIcon {

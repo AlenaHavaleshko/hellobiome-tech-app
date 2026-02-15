@@ -1,3 +1,38 @@
+
+.scrollTopBtn {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 1000;
+  background: #f6e89a;
+  color: #222;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 0.75em 1.5em;
+  font-family: inherit;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.scrollTopBtn:hover, .scrollTopBtn:focus {
+  background: var(--accent-color);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
+@media (max-width: 600px) {
+  .scrollTopBtn {
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.6em 1.1em;
+    font-size: 1em;
+  }
+}
 .container {
   min-height: 100vh;
   display: flex;

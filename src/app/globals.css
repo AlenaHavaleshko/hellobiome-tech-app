@@ -34,12 +34,13 @@
   --secondary-gradient: linear-gradient(135deg, #b8d4c8 0%, #7fa99b 100%);
   --bacteria-color: #7fa99b;
   --fungi-color: #b8d4c8;
+  --accent-mint: #b8d4c8;
   --beneficial-bg: #e8f5f1;
   --beneficial-text: #2d5f4f;
   --neutral-bg: #fef9e7;
   --neutral-text: #6b5d2e;
   --pathogenic-bg: #fee;
-  --pathogenic-text: #8b2e2e;
+  --pathogenic-text: #c28282;
 }
 
 /* Tailwind theme configuration - commented out for compatibility

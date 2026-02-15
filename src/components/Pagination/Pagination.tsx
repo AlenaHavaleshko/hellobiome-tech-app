@@ -13,7 +13,6 @@ function Pagination({ totalPages }: PaginationProps) {
     return null;
   }
 
-  // Validate and constrain values
   const validCurrentPage = Math.max(1, Math.min(currentPage || 1, totalPages));
   const validTotalPages = totalPages;
 
@@ -27,11 +26,11 @@ function Pagination({ totalPages }: PaginationProps) {
         pages.push(i);
       }
     } else {
-      // Always show first page
+
       pages.push(1);
 
       if (validCurrentPage <= 3) {
-        // Show pages 2, 3, 4 and ellipsis
+
         for (let i = 2; i <= Math.min(4, validTotalPages - 1); i++) {
           pages.push(i);
         }
@@ -42,7 +41,7 @@ function Pagination({ totalPages }: PaginationProps) {
           pages.push(validTotalPages);
         }
       } else if (validCurrentPage >= validTotalPages - 2) {
-        // Show ellipsis and last 4 pages
+
         pages.push("...");
         for (
           let i = Math.max(2, validTotalPages - 3);
@@ -52,7 +51,7 @@ function Pagination({ totalPages }: PaginationProps) {
           pages.push(i);
         }
       } else {
-        // Show ellipsis, current page with neighbors, and ellipsis
+
         pages.push("...");
         pages.push(validCurrentPage - 1);
         pages.push(validCurrentPage);
@@ -62,12 +61,12 @@ function Pagination({ totalPages }: PaginationProps) {
       }
     }
 
-    // Filter out any invalid values and ensure no duplicates
+
     return pages.filter((page, index, self) => {
-      if (typeof page === "string") return true; // Keep ellipsis
-      if (typeof page !== "number") return false; // Remove non-numbers
-      if (page < 1 || page > validTotalPages) return false; // Remove out of range
-      // Remove duplicates
+      if (typeof page === "string") return true; 
+      if (typeof page !== "number") return false; 
+      if (page < 1 || page > validTotalPages) return false; 
+
       return self.indexOf(page) === index;
     });
   };
@@ -136,7 +135,7 @@ function Pagination({ totalPages }: PaginationProps) {
           }
 
           if (typeof page !== "number") {
-            return null; // Skip invalid entries
+            return null; 
           }
 
           return (
