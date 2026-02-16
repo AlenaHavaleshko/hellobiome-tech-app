@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "Skin Microbiome Explorer",
     images: [
       {
-        url: "/og-image.png",
+        url: "/meta.png",
         width: 1200,
         height: 630,
         alt: "Skin Microbiome Explorer - Research Platform",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     title: "Skin Microbiome Explorer | Microbiome Research Platform",
     description:
       "Explore and analyze skin microbiome data. Interactive platform for microbiome research.",
-    images: ["/og-image.png"],
+    images: ["/meta.png"],
     creator: "@hellobiome",
   },
   robots: {
